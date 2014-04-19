@@ -1,0 +1,9 @@
+<h1>Restaurants</h1>
+<div class="main_container">
+	<% @restaurants.each do |restaurant| %>
+		<div class="restaurant">
+			<span class="title"><%= link_to restaurant.name, restaurant_path(restaurant)%></span> - <%= restaurant.description %>
+
+		</div>
+	<% end %>
+</div>

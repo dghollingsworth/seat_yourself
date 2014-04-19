@@ -1,0 +1,6 @@
+<h1>Show Page</h1>
+<div class="restaurant">
+	<span class="title"><%= @restaurant.name %></span><br/>
+	<%= @restaurant.description %>
+	<%= link_to "Make Reservation", new_restaurant_reservation_path(@restaurant) %>
+</div>
