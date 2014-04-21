@@ -43,3 +43,6 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'bootstrap-datepicker-rails', :require=>'bootstrap-datepicker-rails', 
+	:git=>'git://github.com/Nerian/bootstrap-datepicker-rails.git'

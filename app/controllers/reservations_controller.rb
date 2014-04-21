@@ -10,12 +10,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
-  	@reservation = @restaurant.reviews.build(reservation_params)
+  	@reservation = @restaurant.reservations.build(reservation_params)
   	@reservation.user_id = current_user.id
   	@reservation.restaurant_id = @restaurant.id
 
   	if @reservation.save
-  		redirect_to reservation_path(reservation)
+      redirect_to restaurant_path(@restaurant), :notice=>"Reservation made!!!"
+
   	else
   		render :new
   	end

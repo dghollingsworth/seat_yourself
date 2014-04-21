@@ -1,4 +1,4 @@
-<h4>Make a Reservation</h4>
+<h2>Make a Reservation</h2>
 
 <%= form_for([@restaurant, @reservation]) do |f| %>
 	<div class="field">
@@ -8,9 +8,10 @@
 		<%= f.label :party_size %><br/>
 		<%= f.text_field :party_size %>
 	</div>
-	<div class="field">
+	<div class="field" data-behaviour="datepicker">
 		<%= f.label :party_time %><br/>
-		<%= f.text_field :party_time %>
+
+		<%= f.datetime_select(:party_time, order: [:month, :day, :hour], prompt:{month:"month", day:"day", hour:"hour"}, :minute_step=>30 )%>
 	</div>
 	<div class="submit">
 		<%= f.submit %>
