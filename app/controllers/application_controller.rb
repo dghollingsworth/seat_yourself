@@ -9,5 +9,19 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
+  def ensure_logged_in
+    unless current_user
+      flash[:alert] = "Please log in"
+      redirect_to new_session_path
+    end
+  end
+
+  def ensure_owner
+    unless current_user && current_user.user_type==2
+      flash[:alert] = "You must have an owner account to create a new restaurant"
+      redirect_to restaurants_path
+    end
+  end
+
   helper_method :current_user
 end

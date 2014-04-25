@@ -1,19 +1,5 @@
 <h2>Make a Reservation</h2>
 
-<%= form_for([@restaurant, @reservation]) do |f| %>
-	<div class="field">
-		At: <%= f.label @restaurant.name %><br/><br/>
-	</div>
-	<div class="field">
-		<%= f.label :party_size %><br/>
-		<%= f.text_field :party_size %>
-	</div>
-	<div class="field" data-behaviour="datepicker">
-		<%= f.label :party_time %><br/>
+<%= render 'form' %>
 
-		<%= f.datetime_select(:party_time, order: [:month, :day, :hour], prompt:{month:"month", day:"day", hour:"hour"}, :minute_step=>30 )%>
-	</div>
-	<div class="submit">
-		<%= f.submit %>
-	</div>
-<% end %>
+<%= link_to 'Back', restaurants_path %>

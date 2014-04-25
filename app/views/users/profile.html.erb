@@ -1,0 +1,17 @@
+<h1>My Reservations</h1>
+<div class="reservations">
+	<% @user.reservations.each do |reservation| %>
+		<p><span class="title"><%= @restaurant.find(reservation.restaurant_id).name %></span> - 
+			<% 
+				m = reservation.party_time.month
+				d = reservation.party_time.day
+				h = reservation.party_time.hour
+				t = reservation.party_time
+			%>
+			<%= t.strftime("%b %d, %l%P") %><br/>
+			<%= "Party of: #{reservation.party_size} people" %>
+			<%= link_to 'Edit', edit_restaurant_reservation_path(reservation.restaurant, reservation) %>
+			<%= link_to 'Delete', restaurant_reservation_path(reservation.restaurant, reservation), :confirm=>"Are you sure you want to delete this reservation?", :method=>:delete %>
+		</p>
+	<% end %>
+</div>

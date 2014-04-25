@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :load_restaurants 
+  before_filter :ensure_logged_in, :only=>[:profile]
   def new
   	@user = User.new
   end
@@ -13,10 +15,19 @@ class UsersController < ApplicationController
   	end
   end
 
+  
+  def profile
+    @user = current_user
+  end
+
   private
 
   def user_params
-  	params.require(:user).permit(:name, :telephone, :email, :password, :password_confirmation)
+  	params.require(:user).permit(:user_type, :name, :telephone, :email, :password, :password_confirmation)
+  end
+
+  def load_restaurants
+    @restaurant = Restaurant.all
   end
 
 end

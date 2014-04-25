@@ -1,0 +1,28 @@
+
+<%= form_for([@restaurant, @reservation]) do |f| %>
+	<% if @reservation.errors.any? %>
+		<div class="error_messages">
+			<h3>mmmm....sorry</h3>
+			<ul>
+				<% @reservation.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		At: <%= f.label @restaurant.name %><br/><br/>
+	</div>
+	<div class="field">
+		<%= f.label :party_size %><br/>
+		<%= f.text_field :party_size %>
+	</div>
+	<div class="field">
+		<%= f.label :party_time %><br/>
+		<%= f.datetime_select(:party_time, order: [:year, :month, :day, :hour], prompt:{month:"month", day:"day", hour:"hour"}, discard_minute: true, start_year: 2014 )%>
+	</div>
+	<div class="submit">
+		<%= f.submit %>
+	</div>
+<% end %>
